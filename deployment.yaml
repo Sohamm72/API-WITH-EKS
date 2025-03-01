@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-website
+spec:
+  replicas: 3  # Run 3 copies for reliability
+  selector:
+    matchLabels:
+      app: ecommerce
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+    spec:
+      containers:
+      - name: ecommerce-container
+        image: my-docker-hub/ecommerce-app:v1  # Replace with your Docker image
+        ports:
+        - containerPort: 80
